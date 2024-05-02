@@ -3,28 +3,24 @@
 </script>
 
 <template>
-  <h1>Calculadora aritimética</h1>
-  <div class="container">
-    <input type="number">
-    <button>1</button>
-    <button>2</button>
-    <button>3</button>
-    <button>4</button>
-    <button>5</button>
-    <button>6</button>
-    <button>7</button>
-    <button>8</button>
-    <button>9</button>
-    <button>0</button>
-    <button>></button>
-    <button>+</button>
-    <button>-</button>
-    <button>÷</button>
-    <button>x</button>
-    <button>=</button>
+  <div>
+    <!-- Campo de entrada para o primeiro número -->
+    <input type="number" v-model="numero1" @input="calcularResultado">
+    
+    <!-- Campo de seleção para escolher a operação aritmética -->
+    <select v-model="operacao" @change="calcularResultado">
+      <option value="soma">+</option>
+      <option value="subtracao">-</option>
+      <option value="multiplicacao">*</option>
+      <option value="divisao">/</option>
+    </select>
+    
+    <!-- Campo de entrada para o segundo número -->
+    <input type="number" v-model="numero2" @input="calcularResultado">
+    
+    <!-- Resultado do cálculo -->
+    <p>Resultado: {{ resultado }}</p>
   </div>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>
