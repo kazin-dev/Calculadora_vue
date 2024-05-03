@@ -1,7 +1,6 @@
-
-
 <script setup>
 import { ref, watch } from 'vue';
+import Calculadora from './components/Calculadora.vue';
 
 const numero1 = ref(0);
 const numero2 = ref(0);
@@ -23,39 +22,50 @@ const calcular = () => {
     resultado.value = numero1.value * numero2.value;
       break;
     default:
-      console.error('Operação não suportada');
+      console.error('Ocorreu um erro');
   }
 }
 
-// Observa as mudanças nas variáveis e chama a função calcular
 watch([numero1, numero2, operacao], () => {
   calcular();
 });
-
-
-
 </script>
 
 <template>
-  <div>
-    <input type="number" v-model="numero1">
-    
-    <!-- Campo de seleção para escolher a operação aritmética -->
-    <select v-model="operacao" @change="calcular">
-      <option value="soma">+</option>
-      <option value="subtracao">-</option>
-      <option value="divisao"> ÷</option>
-      <option value="multiplicacao">x</option>
-    </select>
-    
-    <!-- Campo de entrada para o segundo número -->
-    <input type="number" v-model="numero2">
-    
-    <!-- Resultado do cálculo -->
-    <p>Resultado: {{ resultado }}</p>
+  <h1>Calculadora Aritmética</h1>
+  <div class="container">
+    <Calculadora :resultad/>
   </div>
 </template>
 
 
 
-<style scoped></style>
+<style scoped>
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+
+
+.container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: rgb(235, 209, 65);
+}
+
+input, select{
+  padding: 12px;
+  border-radius: 10px;
+  margin: 0 18px;
+}
+
+p{
+  font-size: 24px;
+}
+
+</style>
